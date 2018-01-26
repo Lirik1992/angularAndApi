@@ -61,6 +61,19 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
   res.json({ user: req.user });
 });
 
+// Get profile data
+router.get('/profile/user', verifyToken, (req, res) => {
+  jwt.verify(req.token, config.secret, (err, data) => {
+    if(err) {
+      res.sendStatus(403);
+    } else {
+      res.json({
+        message: 'Profile has been found',
+        data
+      })
+    }
+  })
+})
 
 // JSON Web Token check
 router.post('/devices/load', verifyToken, (req, res) => {
@@ -70,7 +83,7 @@ router.post('/devices/load', verifyToken, (req, res) => {
     } else {
       res.json({
         message: 'Post created',
-        data,
+        data
       });
     }
   });

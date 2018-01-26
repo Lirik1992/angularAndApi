@@ -15,10 +15,7 @@
   "dependencies": {
     "bcryptjs": "*",
     "body-parser": "*",
-<<<<<<< HEAD
     "bootstrap3": "^3.3.5",
-=======
->>>>>>> e8b3c219617289deb83e47196ff717e699d0b5de
     "cors": "*",
     "express": "*",
     "jquery": "^3.2.1",

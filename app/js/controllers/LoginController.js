@@ -10,18 +10,12 @@ var LoginController = (function () {
     var result = Http.post("http://localhost:3000/users/authenticate", loginForm, function (data) {
       var dataArr = JSON.parse(data);
       var token = dataArr.token;
-<<<<<<< HEAD
       if (token !== 'undefined') {
         setCookie(token);
         window.location = 'HomeApp.html';
       } else {
         console.log('Something bad occured');
       }
-=======
-      console.log(token);
-      setCookie(token);
-      window.location = 'ParalaxEffect.html';
->>>>>>> e8b3c219617289deb83e47196ff717e699d0b5de
     });
 
     // Cookie, the default one  TODO: replace it with js-cookie
