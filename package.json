@@ -1,0 +1,31 @@
+{
+  "name": "authapp",
+  "version": "1.0.0",
+  "description": "This project is a sample application demonstrating a more fully developed realistic single page angular application.",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node scripts/app.js"
+  },
+  "author": "Dmitry Likharev",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+<<<<<<< HEAD
+    "bootstrap3": "^3.3.5",
+=======
+>>>>>>> e8b3c219617289deb83e47196ff717e699d0b5de
+    "cors": "*",
+    "express": "*",
+    "jquery": "^3.2.1",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "nodemon": "^1.14.11",
+    "passport": "*",
+    "passport-jwt": "*"
+  }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eventsApp">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lirikus</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+
+<body ng-cloak>
+
+  <navbar></navbar>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <devices-panel ng-controller="DeviceController"></devices-panel>
+      </div>
+      <profile-panel ng-controller="ProfileController"></profile-panel>
+    </div>
+  </div>
+
+
+  <script src="/lib/jquery/dist/jquery.js"></script>
+  <script src="/lib/underscore-1.4.4.min.js"></script>
+  <script src="/lib/bootstrap.3.js"></script>
+  <script src="/lib/angular/angular.js"></script>
+  <script src="/lib/angular/angular-sanitize.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/controllers/HomeController.js"></script>
+  <script src="/js/controllers/DeviceController.js"></script>
+  <script src="/js/controllers/ProfileController.js"></script>
+  <script src="/js/services/UserService.js"></script>
+</body>
+
+</html>

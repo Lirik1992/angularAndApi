@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eventsApp">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Device Maker</title>
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/app.css">
+</head>
+
+<body ng-cloak style="font-family: 'Noto Sans', sans-serif;">
+	<div class="container">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<ul class="nav">
+					<li>
+						<a href="/NewEvent.html">Create Event</a>
+					</li>
+					<li>
+						<a href="/CreateDevices.html">Create Devices</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container" ng-controller="DeviceController">
+		<h1 style="text-align: center;">Device Maker</h1>
+		<div class="row">
+
+			<div class="col-lg-7 col-md-8 col-sm-12 col-xs-12">
+				<form name="newDevice">
+					<fieldset>
+						<div class="well">
+							<div class="row" style="padding: 20px;">
+								<h2>Device Form</h2>
+								<hr />
+								<div class="col-lg-6 col-sm-3 col-md-7 col-xs-3">
+									<label for="deviceName">
+										<h4>
+											<em>Name</em>
+										</h4>
+									</label>
+									<input tabindex="1" type="text" minlength="5" name="deviceName" id="deviceName" required ng-model="device.name">
+									<label for="deviceType">
+										<h4>
+											<em>Category</em>
+										</h4>
+									</label>
+									<select required ng-model="device.type" name="deviceType" form="newDevice">
+										<option value="">Choose a category</option>
+										<option value="tempHum">Weather</option>
+										<option value="latLon">Geo</option>
+									</select>
+									<button type="submit" ng-click="saveEvent(device, newDevice)" class="btn btn-primary">Submit</button>
+									<button type="button" ng-click="cancelEvent()" class="btn btn-default">Cancel</button>
+								</div>
+								<div class="col-lg-6 col-sm-4 col-md-5 col-xs-4">
+									<div ng-show="newDevice.deviceName.$error.minlength" class="alert alert-warning">
+										<strong>Warning!</strong> Name must be over 5 symbols.
+									</div>
+									<div ng-show="boolType" class="alert alert-warning">
+										<strong>Warning!</strong> Category is required.
+									</div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			<div class="col-lg-5 col-md-4">
+				<h4>
+					<i>About</i>
+				</h4>
+				<p>Simple tool to create new device</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="well">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Device name</th>
+								<th>Category</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="device in devices">
+								<td>{{device.id}}</td>
+								<td>{{device.name}}</td>
+								<td>{{device.category}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/lib/jquery.min.js"></script>
+	<script src="/lib/underscore-1.4.4.min.js"></script>
+	<script src="/lib/bootstrap.min.js"></script>
+	<script src="/lib/angular/angular.js"></script>
+	<script src="/lib/angular/angular-sanitize.js"></script>
+	<script src="/js/app.js"></script>
+	<script src="/js/controllers/DevicesController.js"></script>
+	<script src="/js/filters.js"></script>
+</body>
+
+</html>
