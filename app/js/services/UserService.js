@@ -25,7 +25,7 @@ var Http = (function () {
         callback(xhr.responseText);
       }
     };
-    xhr.send(body);
+    xhr.send(body || null);
   }
 
   /**Http property
@@ -50,3 +50,4 @@ var Http = (function () {
     post: privatePost
   }
 })();
+

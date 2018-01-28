@@ -30,4 +30,6 @@ function DeviceController($scope) {
   function tableIterator() {
     return i++;
   }
+
+
 })

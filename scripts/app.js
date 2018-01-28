@@ -6,6 +6,9 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config/database');
 const rootPath = path.normalize(__dirname + '/../');
+const weather = require('openweathermap-js');
+
+
 
 // Connect to database
 mongoose.connect(config.database);
@@ -51,3 +54,4 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log("Server started on " + port);
 });
+

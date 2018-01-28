@@ -22,6 +22,7 @@
     "jsonwebtoken": "*",
     "mongoose": "*",
     "nodemon": "^1.14.11",
+    "openweathermap-js": "^1.0.1",
     "passport": "*",
     "passport-jwt": "*"
   }

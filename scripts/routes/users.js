@@ -72,8 +72,8 @@ router.get('/profile/user', verifyToken, (req, res) => {
         data
       })
     }
-  })
-})
+  });
+});
 
 // JSON Web Token check
 router.post('/devices/load', verifyToken, (req, res) => {
@@ -104,7 +104,7 @@ function verifyToken(req, res, next) {
   } else {
     res.json({ message: "Server responded with the 403 code." })
   }
-}
+};
 
 
 router.get('/getall', (req, res, next) => {
@@ -115,7 +115,7 @@ router.get('/getall', (req, res, next) => {
 
 // 
 router.get('/validate', (req, res, next) => {
-  res.send('VALIDATE')
+  res.send('VALIDATE');
 });
 
 module.exports = router;

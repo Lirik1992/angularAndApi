@@ -10,7 +10,7 @@ var RegisterController = (function () {
       password: document.getElementsByName("password")[0].value
     };
     var result = Http.post("http://localhost:3000/users/register", registerForm, function (data) {
-      if(data !== 'undefined') {
+      if (data !== 'undefined') {
         window.location = 'LoginForm.html';
       }
     });

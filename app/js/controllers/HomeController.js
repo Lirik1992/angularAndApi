@@ -12,4 +12,8 @@ eventsApp.directive('navbar', function() {
   return {
     templateUrl: 'ProfilePanel.html'
   }
+}).directive('deviceCreatorWidget', function() {
+  return {
+    templateUrl: 'DeviceWidget.html'
+  }
 })
