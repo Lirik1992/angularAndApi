@@ -22,41 +22,61 @@
 
   </div>
 
-  <section class="section section-light">
-
-    <div class="sectionContainerOne">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis ipsum ipsa soluta sunt distinctio vitae modi atque
-        quo facilis? Quibusdam expedita labore error dolores eaque deleniti atque delectus laboriosam assumenda.</p>
-
-
-      <div class="loginRegister">
-        <button onclick="location.href = 'LoginForm.html'" class="pulse">Login</button>
-        <button id="registerButton" class="pulse">Register</button>
+  <section id="showcase" class="section section-light">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+          <div class="showcase-left">
+            <h2>Already have an account</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam possimus, quisquam accusantium asperiores eum
+              explicabo!
+            </p>
+            <div>
+              <button onclick="location.href = 'LoginForm.html'" class="showcase-btn">Login</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+          <div class="showcase-right">
+            <h2>New customer?</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam possimus, quisquam accusantium asperiores eum
+              explicabo!
+            </p>
+            <div>
+              <button onclick="location.href = 'RegistrationPage.html'" class="showcase-btn">Register</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <script type="text/javascript">
-        document.getElementById('registerButton').onclick = function () {
-          location.href = 'RegistrationPage.html';
-        }
-      </script>
     </div>
+
   </section>
 
   <div class="pimg2">
     <div class="ptext">
-      <span class="border trans">
-        Powered by
+      <span class="border">
+        Slain the Titan
       </span>
     </div>
   </div>
 
   <section class="section section-dark">
-    <div class="sectionContainerTwo">
+    <div class="container">
       <div class="row">
-        <div class="inlineimg">
-          <img id="im1" src="img/anjs.png" alt="">
-          <img id="im2" src="img/Boot3.png" alt="">
-          <img id="im3" src="img/Njs.png" alt="">
-          <img id="im4" src="img/css3.png" alt="">
+        <div class="col-md-6 col-sm-6">
+          <div class="inlineimg">
+            <img class="hover-shadow cursor" id="im1" src="img/anjs.png" alt="">
+            <img class="hover-shadow cursor" id="im2" src="img/Boot3.png" alt="">
+            <img class="hover-shadow cursor" id="im3" src="img/Njs.png" alt="">
+            <img class="hover-shadow cursor" id="im4" src="img/css3.png" alt="">
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+          <div class="imageInfo">
+            <h2>Dive in</h2>
+            <p id="infoText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam sunt possimus recusandae officiis. Quas, at
+              minima neque similique iusto deleniti harum fugit possimus ipsum enim.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -64,21 +84,24 @@
 
   <div class="pimg3">
     <div class="ptext">
-
+      <span class="border">
+        Manage your life
+      </span>
     </div>
   </div>
 
   <section class="section section-dark">
-    <h3>About</h3>
-
-
-
+    <div class="feedback">
+      <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis, nemo! Nihil est vitae dolorem illum exercitationem.
+        Saepe natus totam pariatur quaerat vero nihil itaque. Nesciunt nisi nostrum rerum reprehenderit asperiores?"</p>
+      <p>- John Doe</p>
+    </div>
   </section>
 
   <footer class="footer">
     <div class="container">
       <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-md-3 col-sm-3">
           <ul>
             <li class="title">Overview</li>
             <li>
@@ -92,21 +115,7 @@
             </li>
           </ul>
         </div>
-        <div class="col-lg-3">
-          <ul>
-            <li class="title">Overview</li>
-            <li>
-              <a href="#">Home</a>
-            </li>
-            <li>
-              <a href="#">Devices</a>
-            </li>
-            <li>
-              <a href="#">Summary</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg-6">
+        <div class="col-lg-3 col-md-3 col-sm-3">
           <div class="footer-social-icons">
             <ul class="social-icons">
               <li>
@@ -127,9 +136,23 @@
               <li>
                 <a href="" class="social-icon">
                   <i class="fa fa-bitbucket"></i>
+                </a>
               </li>
             </ul>
           </div>
+        </div>
+        <div class="col-lg-6">
+          <form>
+            <div class="form-group">
+              <input class="form-control input-sm" type="text" placeholder="User Name">
+            </div>
+            <div class="form-group">
+              <input class="form-control input-sm" type="text" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <input type="button" class="btn btn-primary btn-block" value="Contact Us">
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -140,7 +163,38 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+  <script src="js/scrollReveal.js"></script>
 
+  <script>
+    $(function () {
+      // Smooth Scrolling
+      $('a[href*="#"]:not([href="#"])').click(function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+          if (target.length) {
+            $('html, body').animate({
+              scrollTop: target.offset().top
+            }, 1000);
+            return false;
+          }
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
+
+
+<!-- 
+<div class="sectionContainerTwo">
+    <div class="row">
+      <div class="inlineimg">
+        <img class="hover-shadow cursor" id="im1" src="img/anjs.png" alt="">
+        <img class="hover-shadow cursor" id="im2" src="img/Boot3.png" alt="">
+        <img class="hover-shadow cursor" id="im3" src="img/Njs.png" alt="">
+        <img class="hover-shadow cursor" id="im4" src="img/css3.png" alt="">
+      </div>
+    </div>
+  </div> -->
