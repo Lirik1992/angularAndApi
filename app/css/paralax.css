@@ -2,7 +2,7 @@ body, html {
     height: 100%;
     margin: 0;
     font-size: 16px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Lato', sans-serif;
     font-weight: 400;
     line-height: 1.8em;
     color: #666;
@@ -19,7 +19,7 @@ body, html {
         scroll == normal
     */
     background-attachment: fixed;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25), 0 -8px 20px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 14px 18px rgba(0, 0, 0, 0.25), 0 -10px 17px rgba(0, 0, 0, 0.22);
 }
 
 .pimg1 {
@@ -53,13 +53,13 @@ body, html {
 }
 
 .feedback {
+    font-family: 'Poppins', sans-serif;
     font-size: 18px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .imageInfo {
+    margin-top: 15px;
     font-size: 16px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .imageInfo h2{
@@ -68,7 +68,7 @@ body, html {
 }
 
 #infoText {
-    text-align: left;
+    text-align: center;
 }
 
 .ptext {
@@ -88,7 +88,6 @@ body, html {
     text-align: center;
     color: black;
     border: none;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px;
 }
 
@@ -96,6 +95,7 @@ body, html {
     background-color: #111;
     color: #fff;
     padding: 20px;
+    font-family: 'Monoton', cursive;
 }
 
 .ptext .border.trans {
@@ -138,8 +138,7 @@ body, html {
 }
 
 .inlineimg {
-    padding-top: 10px;
-    display: -webkit-box;
+    padding-top: 10px; 
     display: flex;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
@@ -161,8 +160,8 @@ button {
 }
 
 img {
-    width: 15%;
-    height: 15%;
+    width: 20%;
+    height: 20%;
     -webkit-box-shadow:
 		0 1px 0 rgba(255,255,255,.2),
 		inset 0 4px 5px rgba(0,0,0,.6),
@@ -205,10 +204,9 @@ img.hover-shadow {
 }
 
 .showcase-left button {
-    color: #6eb5ef;
-}
-
-.showcase-right button {
     color: #30d374;
 }
 
+.showcase-right button {
+    color: #6eb5ef;
+}

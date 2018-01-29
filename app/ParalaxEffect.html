@@ -6,12 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Paralax Website</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato|Poppins|Monoton" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/css/paralax.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/socials.css">
 </head>
 
-<body ng-cloak>
+<body ng-cloak id="body">
 
   <div class="pimg1">
     <div class="ptext">
@@ -25,18 +26,18 @@
   <section id="showcase" class="section section-light">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6 col-sm-6">
+        <div class="col-lg-6 col-md-6 col-sm-6">
           <div class="showcase-left">
             <h2>Already have an account</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam possimus, quisquam accusantium asperiores eum
               explicabo!
             </p>
             <div>
-              <button onclick="location.href = 'LoginForm.html'" class="showcase-btn">Login</button>
+              <button onclick="RedirectToFade()" class="showcase-btn">Login</button>
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-sm-6">
+        <div class="col-lg-6 col-md-6 col-sm-6">
           <div class="showcase-right">
             <h2>New customer?</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam possimus, quisquam accusantium asperiores eum
@@ -49,8 +50,8 @@
         </div>
       </div>
     </div>
-
   </section>
+
 
   <div class="pimg2">
     <div class="ptext">
@@ -63,7 +64,7 @@
   <section class="section section-dark">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-sm-6">
+        <div class="col-lg-6 col-md-6 col-sm-6">
           <div class="inlineimg">
             <img class="hover-shadow cursor" id="im1" src="img/anjs.png" alt="">
             <img class="hover-shadow cursor" id="im2" src="img/Boot3.png" alt="">
@@ -71,7 +72,7 @@
             <img class="hover-shadow cursor" id="im4" src="img/css3.png" alt="">
           </div>
         </div>
-        <div class="col-md-6 col-sm-6">
+        <div class="col-lg-6 col-md-6 col-sm-6">
           <div class="imageInfo">
             <h2>Dive in</h2>
             <p id="infoText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam sunt possimus recusandae officiis. Quas, at
@@ -85,7 +86,7 @@
   <div class="pimg3">
     <div class="ptext">
       <span class="border">
-        Manage your life
+        實驗室做週五和
       </span>
     </div>
   </div>
@@ -141,7 +142,7 @@
             </ul>
           </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-md-6 col-sm-6">
           <form>
             <div class="form-group">
               <input class="form-control input-sm" type="text" placeholder="User Name">
@@ -164,6 +165,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
   <script src="js/scrollReveal.js"></script>
+  <script src="js/RedirectToFade.js"></script>
 
   <script>
     $(function () {
@@ -181,6 +183,15 @@
         }
       });
     });
+  </script>
+
+  <script>
+
+    function RedirectToFade() {
+      $("#body").fadeOut();
+      $("#element").fadeIn();
+    }
+
   </script>
 </body>
 

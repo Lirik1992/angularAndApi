@@ -14,7 +14,7 @@ sr.reveal('.showcase-right', {
 sr.reveal('.showcase-btn', {
   duration: 2000,
   reset: true,
-  delay: 1000,
+  delay: 800,
   origin: 'bottom'
 });
 sr.reveal('.inlineimg', {
