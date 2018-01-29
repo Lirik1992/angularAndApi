@@ -52,8 +52,8 @@ body, html {
     color: #ddd;
 }
 
-#textFeedback {
-    font-size: 16px;
+.feedback {
+    font-size: 18px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
