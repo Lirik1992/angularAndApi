@@ -2,13 +2,14 @@
   "name": "authapp",
   "version": "1.0.0",
   "description": "This project is a sample application demonstrating a more fully developed realistic single page angular application.",
-  "main": "app.js",
+  "main": "scripts/app.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node scripts/app.js"
+    "start": "node scripts/app.js",
+    "dev": "nodemon scripts/app.js"
   },
   "author": "Dmitry Likharev",
   "license": "ISC",
@@ -21,9 +22,10 @@
     "jquery": "^3.2.1",
     "jsonwebtoken": "*",
     "mongoose": "*",
-    "nodemon": "^1.14.11",
-    "openweathermap-js": "^1.0.1",
     "passport": "*",
     "passport-jwt": "*"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.11"
   }
 }
