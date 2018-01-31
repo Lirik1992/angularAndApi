@@ -12,7 +12,8 @@ router.post('/register', (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
     username: req.body.username,
-    password: req.body.password
+    password: req.body.password,
+    gender: req.body.gender
   });
 
   User.addUser(newUser, (err, user) => {
@@ -55,6 +56,22 @@ router.post('/authenticate', (req, res, next) => {
     });
   });
 });
+
+// Update User 
+router.put('/profile/update', verifyToken, (req, res) => {
+  jwt.verify(req.token, config.secret, (err, data) => {
+    if(err) {
+      res.sendStatus(403);
+    } else {
+      User.update(req._id, req.body, (err, data) => {
+        res.json({
+          success: true,
+          data
+        })
+      })
+    }
+  })
+})
 
 // Passport auth
 router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res, next) => {
