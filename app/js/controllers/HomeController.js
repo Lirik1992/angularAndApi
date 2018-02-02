@@ -1,19 +1,16 @@
-'use strict';
+(function() {
 
-eventsApp.directive('navbar', function() {
-  return {
-    templateUrl: '/NavigationBarDirective/Navigation.html'
-  }
-}).directive('devicesPanel', function() {
-  return {
-    templateUrl: 'DevicesPanel.html'
-  }
-}).directive('profilePanel', function() {
-  return {
-    templateUrl: 'ProfilePanel.html'
-  }
-}).directive('deviceCreatorWidget', function() {
-  return {
-    templateUrl: 'DeviceWidget.html'
-  }
-})
+  angular.module('mainApp')
+    .controller('HomeController', ['dataService', '$route', '$log', HomeController]);
+
+    function HomeController(dataService, $route, $log) {
+      var vm = this;
+      
+      vm.name = 'Dima';
+      vm.email = 'Dima';
+      vm.username = 'Dima';
+
+      vm.greeting = dataService.greeting;
+
+    }
+})();
