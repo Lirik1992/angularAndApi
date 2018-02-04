@@ -29,7 +29,7 @@ const port = 3000;
 app.use(cors());
 
 // Set static folder
-app.use(express.static(rootPath + '/app/templates'));
+app.use(express.static(rootPath + '/app'));
 
 // Body-parser Middleware
 app.use(bodyParser.json());

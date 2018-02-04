@@ -22,6 +22,9 @@ const UserSchema = mongoose.Schema({
   gender: {
     type: String,
     require: true
+  },
+  devices: {
+    type: Array
   }
 });
 

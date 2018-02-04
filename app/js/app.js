@@ -1,12 +1,12 @@
-(function() {
+(function () {
 	'use strict';
-	var mainApp = angular.module('mainApp', [ 'ngSanitize', 'ngRoute' ]);
+	var mainApp = angular.module('mainApp', ['ngSanitize', 'ngRoute']);
 
-	mainApp.provider('dataService', function() {
-		this.$get = function() {
-      var name = 'Hello';
-      var i = 1;
-      var devices = [
+	mainApp.provider('dataService', function () {
+		this.$get = function () {
+			var name = 'Hello';
+			var i = 1;
+			var devices = [
 				{
 					id: tableIterator(),
 					name: 'Arduino home',
@@ -28,15 +28,16 @@
 					status: 'broken',
 					hasError: false
 				}
-      ];
-      
+			];
+
+
 			function tableIterator() {
 				return i++;
-      }
-      
+			}
+
 			return {
-        greeting: name,
-        getDevices: devices
+				greeting: name,
+				getDevice: devices
 			};
 		};
 	});
@@ -44,7 +45,7 @@
 	mainApp.config([
 		'$logProvider',
 		'$routeProvider',
-		function($logProvider, $routeProvider) {
+		function ($logProvider, $routeProvider) {
 			$logProvider.debugEnabled(true);
 
 			$routeProvider
@@ -57,7 +58,12 @@
 					controller: 'DeviceController',
 					controllerAs: 'deviceVM',
 					templateUrl: '/templates/device.html'
-				});
+				})
+				.when('/dashboard', {
+					controller: 'DashboardController',
+					controllerAs: 'dashboardVM',
+					templateUrl: '/templates/dashboard.html'
+				})
 		}
 	]);
 })();
