@@ -2,12 +2,11 @@
   'use strict';
 
   angular.module('mainApp')
-    .controller('DeviceController', ['dataService', DeviceController]);
+    .controller('DeviceController', ['homeService', DeviceController]);
 
-  function DeviceController(devicess) {
-    'use strict';
+  function DeviceController(homeService) {
+    
     var vm = this;
-
 
   }
 

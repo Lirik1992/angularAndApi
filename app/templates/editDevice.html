@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Device form</h3>
+        </div>
+        <div class="panel-body">
+          <form action="newDevice" role="form">
+
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" name="name" id="name" placeholder="Give a name to your device" minlength="5" required
+                tabindex="1" ng-model="deviceEditor.currentDevice.name">
+            </div>
+
+            <div class="form-group">
+              <label for="model">Model</label>
+              <input type="text" class="form-control" name="model" id="model" placeholder="Give your device a model" required tabindex="2" ng-model="deviceEditor.currentDevice.model">
+            </div>
+
+            <div class="form-group">
+              <label for="summary">Summary</label>
+              <textarea type="textarea" class="form-control" name="summary" id="summary" placeholder="Say something about your device"
+                minlength="10" required tabindex="3" ng-model="deviceEditor.currentDevice.summary"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="type">Choose type of your device</label>
+              <br>
+              <select name="type" tabindex="4" required ng-model="deviceEditor.currentDevice.type">
+                <option value="temp/hum">Weather (temp/hum)</option>
+                <option value="wind">Wind speed</option>
+                <option value="gps">GPS (geoposition)</option>
+                <option value="movement">Motion sensor</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <button class="btn btn-primary">Save</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

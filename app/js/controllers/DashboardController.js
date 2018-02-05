@@ -1,14 +1,49 @@
-(function () {
-  'use strict'
+(function() {
+	'use strict';
 
   angular.module('mainApp')
-    .controller('DashboardController', DashboardController);
+    .controller('DashboardController', [ '$q' ,'homeService', DashboardController ]);
 
-    function DashboardController(homeSevice) {
+	function DashboardController($q, homeService) {
+    var vm = this;
+    
+    var devicesPromise = homeService.getAllDevices();
+    var usersPromise = homeService.getAllUsers();
 
-      var vm = this;
-      vm.dev = homeSevice.getAllDevices();
+    $q.all([devicesPromise, usersPromise])
+      .then(getAllDataSuccess)
+      .catch(getAllDataError);
+
+    function getAllDataSuccess(dataArray) {
+      vm.allDevices = dataArray[0];
+      vm.allUsers = dataArray[1];
+    }
+
+    function getAllDataError(reason) {
+      console.log(reason);
     }
 
 
-}())
+    
+    // homeService.getAllDevices()
+    //   .then(getDevicesSuccess, null)
+    //   .catch(errorCallback);
+
+    // function getDevicesSuccess(devices) {
+    //   vm.allDevices = devices;
+    // }
+
+    // function errorCallback(errorMsg) {
+    //   console.log('Error message ' + errorMsg);
+    // }
+
+    // homeService.getAllUsers()
+    //   .then(getAllUsersSuccess)
+    //   .catch(errorCallback);
+
+    // function getAllUsersSuccess(users) {
+    //   vm.allUsers = users;
+    // }
+
+	}
+})();

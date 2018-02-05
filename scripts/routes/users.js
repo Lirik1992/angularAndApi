@@ -59,16 +59,17 @@ router.post('/authenticate', (req, res, next) => {
 // Update User
 router.put('/profile/update', verifyToken, (req, res) => {
 	jwt.verify(req.token, config.secret, (err, data) => {
-
-
-		console.log(req.body)
-			User.update({_id: "5a6c5bf0da25a610b0884550"}, {$push: {devices: req.body.devices}}, {safe: true, upsert: true}, (err, data) => {
+		User.update(
+			{ _id: req.body.id },
+			{ $push: { devices: req.body.devices } },
+			{ safe: true, upsert: true },
+			(err, data) => {
 				res.json({
 					success: true,
 					data
 				});
-			});
-
+			}
+		);
 	});
 });
 
@@ -111,19 +112,19 @@ router.get('/profile/device/:id', (req, res) => {
 	var id = req.params.id;
 	User.findById(id, (err, data) => {
 		var devices = data.devices;
-		 res.json({
-			 devices
-		 });
-	})
-})
+		res.json({
+			devices
+		});
+	});
+});
 
 // Check if the username is already taken
 router.post('/profile/check', (req, res) => {
 	User.findOne(req.body.username, (err, data) => {
 		if (data != 'undefined') {
-			res.json({data})
+			res.json({ data });
 		} else {
-      var newUser = new User({
+			var newUser = new User({
 				name: req.body.name,
 				email: req.body.email,
 				username: req.body.username,
@@ -138,7 +139,7 @@ router.post('/profile/check', (req, res) => {
 					res.json({ success: true, msg: 'User registered' });
 				}
 			});
-    }
+		}
 	});
 });
 

@@ -13,7 +13,7 @@ var RegisterController = (function () {
     console.log(registerForm);
     var result = Http.post("http://localhost:3000/users/register", registerForm, function (data) {
       if (data !== 'undefined') {
-        
+        window.location = 'LoginForm.html';
       }
     });
 

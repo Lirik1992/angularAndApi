@@ -2,16 +2,11 @@ body {
   background-color: #222255;
 }
 
-div.panel {
-  margin: 50px 50px;
-}
-
-.navbar {
+nav.navbar {
   border: none;
   background-color: #111122;
   padding: 15px 15px;
   font-size: 1.3em;
-  word-spacing: 20px;
 }
 
 .navbar-brand {
@@ -21,13 +16,12 @@ div.panel {
 }
 
 .menu.navbar-items {
-  margin-left: 15px;
   display: block;
   text-align: left;
   width: 120px;
 }
 
 .menu.navbar-items:hover {
-  transform: matrix(1.2, 4, 4, 1.2, 20%, 20%)
+  text-decoration: underline
 }
 

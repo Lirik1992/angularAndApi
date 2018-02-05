@@ -12,7 +12,7 @@ var LoginController = (function () {
       var token = dataArr.token;
       if (token !== 'undefined') {
         setCookie(token);
-        window.location = 'HomeApp.html';
+        window.location = '/index.html';
       } else {
         console.log('Something bad occured');
       }

@@ -1,15 +1,34 @@
-<div class="col-md-6">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">Profile</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Profile</h3>
+        </div>
+        <div class="panel-body">
+          <h4 class="headingWord">Profile</h4>
+          <hr>
+          <label for="userName">Name: {{home.name}}</label><br>
+          <label for="userEmail">Email: {{home.email}}</label><br>
+          <label for="userUsername">Username: {{home.username}}</label><br>
+          <label for="message">Message: {{home.greeting}}</label>
+        </div>
       </div>
-      <div class="panel-body">
-        <h4 class="headingWord">Profile</h4>
-        <hr>
-        <label for="userName">Name: {{home.name}}</label><br>
-        <label for="userEmail">Email: {{home.email}}</label><br>
-        <label for="userUsername">Username: {{home.username}}</label><br>
-        <label for="message">Message: {{home.greeting}}</label>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Application info</h3>
+        </div>
+        <div class="panel-body">
+          <h4 class="headingWord">{{home.appName}} v{{home.appVersion}}</h4>
+          <hr>
+          <div class="well-sm">
+            <label for="description">Description: {{home.appDescription}}</label>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>

@@ -2,45 +2,21 @@
 	'use strict';
 	var mainApp = angular.module('mainApp', ['ngSanitize', 'ngRoute']);
 
-	mainApp.provider('dataService', function () {
+	mainApp.provider('appData', ['constants', function(constants) {
 		this.$get = function () {
-			var name = 'Hello';
-			var i = 1;
-			var devices = [
-				{
-					id: tableIterator(),
-					name: 'Arduino home',
-					type: 'temp/hum',
-					status: 'working',
-					hasError: false
-				},
-				{
-					id: tableIterator(),
-					name: 'Arduino nextgen',
-					type: 'geo',
-					status: 'unstable connection',
-					hasError: true
-				},
-				{
-					id: tableIterator(),
-					name: 'Arduino shiet',
-					type: 'wind speed',
-					status: 'broken',
-					hasError: false
-				}
-			];
 
-
-			function tableIterator() {
-				return i++;
-			}
+			var appName = constants.APP_NAME;
+			console.log(appName)
+			var appDescription = constants.APP_DESCRIPTION;
+			var appVersion = constants.APP_VERSION;
 
 			return {
-				greeting: name,
-				getDevice: devices
+				appName: appName,
+				appDescription: appDescription,
+				appVersion: appVersion
 			};
 		};
-	});
+	}]);
 
 	mainApp.config([
 		'$logProvider',
@@ -59,11 +35,22 @@
 					controllerAs: 'deviceVM',
 					templateUrl: '/templates/device.html'
 				})
+				.when('/addDevice', {
+					controller: 'AddDeviceController',
+					controllerAs: 'addDeviceVM',
+					templateUrl: '/templates/addDevice.html'
+				})
+				.when('/editDevice/:deviceID', {
+					controller: 'EditDeviceController',
+					controllerAs: 'deviceEditor',
+					templateUrl: '/templates/editDevice.html'
+				})
 				.when('/dashboard', {
 					controller: 'DashboardController',
 					controllerAs: 'dashboardVM',
 					templateUrl: '/templates/dashboard.html'
 				})
+				.otherwise('/')
 		}
 	]);
 })();
