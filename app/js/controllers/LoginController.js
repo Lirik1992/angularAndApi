@@ -7,14 +7,14 @@ var LoginController = (function () {
       username: document.getElementsByName("username")[0].value,
       password: document.getElementsByName("password")[0].value
     };
-    var result = Http.post("http://localhost:3000/users/authenticate", loginForm, function (data) {
-      var dataArr = JSON.parse(data);
-      var token = dataArr.token;
-      if (token !== 'undefined') {
+    var result = Http.post("http://localhost:3000/users/authenticate", loginForm, function(data, err) {
+      var parsedData = JSON.parse(data);
+      var token = parsedData.token;
+      if (!parsedData.success) {
+        console.log('Something bad occured');
+      } else {
         setCookie(token);
         window.location = '/index.html';
-      } else {
-        console.log('Something bad occured');
       }
     });
 

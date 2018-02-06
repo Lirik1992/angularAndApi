@@ -2,11 +2,11 @@
 	'use strict';
 
   angular.module('mainApp')
-    .controller('DashboardController', [ '$q' ,'homeService', DashboardController ]);
+    .controller('DashboardController', [ '$q' ,'homeService', '$log', '$cookies', DashboardController ]);
 
-	function DashboardController($q, homeService) {
+	function DashboardController($q, homeService, $log, $cookies) {
     var vm = this;
-    
+
     var devicesPromise = homeService.getAllDevices();
     var usersPromise = homeService.getAllUsers();
 
@@ -15,6 +15,7 @@
       .catch(getAllDataError);
 
     function getAllDataSuccess(dataArray) {
+      console.log(dataArray);
       vm.allDevices = dataArray[0];
       vm.allUsers = dataArray[1];
     }
@@ -23,8 +24,11 @@
       console.log(reason);
     }
 
+    vm.favouriteDevice = $cookies.favouriteDevice;
 
-    
+    $log.warn('sfdsfs')
+    $log.debug('Fdsfsdfsd');
+
     // homeService.getAllDevices()
     //   .then(getDevicesSuccess, null)
     //   .catch(errorCallback);

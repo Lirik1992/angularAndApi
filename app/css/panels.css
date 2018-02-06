@@ -1,0 +1,7 @@
+.panel {
+  transition: box-shadow 0.6s;
+}
+
+.panel:hover {
+  box-shadow: 0px 0px 25px 8px rgba(0,0,0,.4);
+}

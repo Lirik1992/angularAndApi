@@ -1,111 +1,118 @@
-(function() {
-  'use strict'
+(function () {
+    'use strict'
 
-  angular.module('mainApp')
-    .factory('homeService',['$q', '$timeout', homeService]);
+    angular.module('mainApp')
+        .factory('homeService', ['$q', '$timeout', homeService]);
 
     function homeService($q, $timeout) {
 
-      var greeting = 'Hello';
+        var greeting = 'Hello';
 
-      return {
-        getAllDevices: getAllDevices,
-        getAllUsers: getAllUsers,
-        greeting: greeting
-      }
+        return {
+            getAllDevices: AllDevices,
+            getAllUsers: AllUsers,
+            greeting: greeting
+        }
 
-      function getAllDevices() {
-        var devicesArray = [
-          {
-            id: 1,
-            name: 'Arduino home',
-            type: 'temp/hum',
-            status: 'working',
-            hasError: false
-          },
-          {
-            id: 2,
-            name: 'Arduino nextgen',
-            type: 'geo',
-            status: 'unstable connection',
-            hasError: false
-          },
-          {
-            id: 3,
-            name: 'Arduino shiet',
-            type: 'wind speed',
-            status: 'broken',
-            hasError: true
-          },
-          {
-            id: 4,
-            name: 'Arduino X',
-            type: 'move sensor',
-            status: 'working',
-            hasError: false
-          },
-          {
-            id: 5,
-            name: 'Arduino XVI',
-            type: 'GPS',
-            status: 'working',
-            hasError: false
-          }
-        ];
+        function AllDevices() {
+            var devicesArray = [
+                {
+                    id: 1,
+                    name: 'Arduino home',
+                    type: 'temp/hum',
+                    status: 'working',
+                    hasError: false
+                },
+                {
+                    id: 2,
+                    name: 'Arduino nextgen',
+                    type: 'geo',
+                    status: 'unstable connection',
+                    hasError: false
+                },
+                {
+                    id: 3,
+                    name: 'Arduino shiet',
+                    type: 'wind speed',
+                    status: 'broken',
+                    hasError: true
+                },
+                {
+                    id: 4,
+                    name: 'Arduino X',
+                    type: 'move sensor',
+                    status: 'working',
+                    hasError: false
+                },
+                {
+                    id: 5,
+                    name: 'Arduino XVI',
+                    type: 'GPS',
+                    status: 'working',
+                    hasError: false
+                },
+                {
+                    id: 6,
+                    name: 'Arduino',
+                    type: 'GPS',
+                    status: 'working',
+                    hasError: false
+                }
+            ];
 
-        var deferred = $q.defer();
-      
-        $timeout(function() {
+            var deferred = $q.defer();
 
-          var successful = true;
+            $timeout(function () {
 
-          if(successful) {
+                var successful = true;
 
-            deferred.resolve(devicesArray);
-          } else {
-            deferred.reject('Error happened')
-          }
+                if (successful) {
 
-        }, 1000);
+                    deferred.resolve(devicesArray);
+                } else {
+                    deferred.reject('Error happened')
+                }
 
-        return deferred.promise;
-      }
+            }, 1000);
 
-      function getAllUsers() {
+            return deferred.promise;
+        }
 
-        var usersArray = [
-          {
-            id: 1,
-            name: 'Volodia',
-            username: 'Master',
-            password: '111',
-            email: 'master@f.com'
-          },
-          {
-            id: 2,
-            name: 'Semen',
-            username: 'Chucha',
-            password: '222',
-            email: 'chucha@list.ru'
-          },
-          {
-            id: 3,
-            name: 'Gena',
-            username: 'Bober',
-            password: '333',
-            email: 'bober@gmail.com'
-          }
-        ];
+        function AllUsers() {
 
-        var deferred = $q.defer();
+            var usersArray = [
+                {
+                    id: 1,
+                    name: 'Volodia',
+                    username: 'Master',
+                    password: '111',
+                    email: 'master@f.com'
+                },
+                {
+                    id: 2,
+                    name: 'Semen',
+                    username: 'Chucha',
+                    password: '222',
+                    email: 'chucha@list.ru'
+                },
+                {
+                    id: 3,
+                    name: 'Gena',
+                    username: 'Bober',
+                    password: '333',
+                    email: 'bober@gmail.com'
+                }
+            ];
 
-        $timeout(function() {
-          deferred.resolve(usersArray)
+            var deferred = $q.defer();
 
-        }, 1500);
+            $timeout(function () {
+                deferred.resolve(usersArray)
 
-        return deferred.promise;
-      }
+            }, 1500);
+
+            return deferred.promise;
+        }
     }
 
 }())
