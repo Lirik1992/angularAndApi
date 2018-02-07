@@ -2,9 +2,9 @@
     'use strict'
 
     angular.module('mainApp')
-        .factory('homeService', ['$q', '$timeout', homeService]);
+        .factory('homeService', ['$q', '$timeout','$http', 'constants', homeService]);
 
-    function homeService($q, $timeout) {
+    function homeService($q, $timeout, $http, constants) {
 
         var greeting = 'Hello';
 
@@ -12,70 +12,15 @@
             getAllDevices: AllDevices,
             getAllUsers: AllUsers,
             greeting: greeting
-        }
+        };
 
         function AllDevices() {
-            var devicesArray = [
-                {
-                    id: 1,
-                    name: 'Arduino home',
-                    type: 'temp/hum',
-                    status: 'working',
-                    hasError: false
-                },
-                {
-                    id: 2,
-                    name: 'Arduino nextgen',
-                    type: 'geo',
-                    status: 'unstable connection',
-                    hasError: false
-                },
-                {
-                    id: 3,
-                    name: 'Arduino shiet',
-                    type: 'wind speed',
-                    status: 'broken',
-                    hasError: true
-                },
-                {
-                    id: 4,
-                    name: 'Arduino X',
-                    type: 'move sensor',
-                    status: 'working',
-                    hasError: false
-                },
-                {
-                    id: 5,
-                    name: 'Arduino XVI',
-                    type: 'GPS',
-                    status: 'working',
-                    hasError: false
-                },
-                {
-                    id: 6,
-                    name: 'Arduino',
-                    type: 'GPS',
-                    status: 'working',
-                    hasError: false
-                }
-            ];
 
-            var deferred = $q.defer();
+            return $http({
+                method: 'GET',
+                url: 'localhost:3000',
 
-            $timeout(function () {
-
-                var successful = true;
-
-                if (successful) {
-
-                    deferred.resolve(devicesArray);
-                } else {
-                    deferred.reject('Error happened')
-                }
-
-            }, 1000);
-
-            return deferred.promise;
+            })
         }
 
         function AllUsers() {

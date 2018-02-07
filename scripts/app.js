@@ -19,10 +19,14 @@ mongoose.connection.on('error', (err) => {
     console.log('Database error ' + err);
 });
 
+
 const app = express();
 
+// Router routes
 const users = require('./routes/users');
+const devices = require('./routes/devices')
 
+// Port
 const port = 3000;
 
 // Cors Middleware
@@ -40,7 +44,9 @@ app.use(passport.session());
 
 require('./config/passport')(passport);
 
+// Path to collections
 app.use('/users', users);
+app.use('/devices', devices);
 
 // Index Route
 app.get('/', (req, res) => {
