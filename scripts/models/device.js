@@ -14,6 +14,8 @@ const DeviceSchema = mongoose.Schema({
 });
 
 
+const Device = module.exports = mongoose.model('Device', DeviceSchema);
+
 module.exports.addDevice = function(newDevice, callback) {
 	newDevice.save(callback);
 };
@@ -21,7 +23,3 @@ module.exports.addDevice = function(newDevice, callback) {
 module.exports.getDeviceById = function(id,callback) {
   Device.findById(id, callback)
 }
-
-
-
-const Device = module.exports = mongoose.model('Device', DeviceSchema);
