@@ -22,6 +22,7 @@ router.post('/register', (req, res, next) => {
             res.json({success: true, msg: 'User registered'});
         }
     });
+    next();
 });
 
 // Authentication
@@ -54,6 +55,23 @@ router.post('/authenticate', (req, res, next) => {
             }
         });
     });
+});
+
+// Get User information by ID
+router.get('/profile/:id', (req, res) => {
+    User.getUserById(req.params.id, (err, data) => {
+        if (!err) {
+            res.json({
+                message: 'successfully get user data from the server',
+                data
+            })
+        } else {
+            res.json({
+                message: 'failed to get user from the server',
+                err
+            })
+        }
+    })
 });
 
 // Update User
@@ -162,6 +180,7 @@ function verifyToken(req, res, next) {
 router.get('/getall', (req, res, next) => {
     User.find({}, function (err, users) {
         res.json(users);
+        next();
     });
 });
 

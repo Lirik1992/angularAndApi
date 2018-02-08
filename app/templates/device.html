@@ -15,8 +15,9 @@
                 <th>Status</th>
               </tr>
             </thead>
-            <tbody>
-              <tr ng-repeat="device in deviceVM.devices" ng-class="{'danger': device.hasError}">
+            <tbody ng-repeat="device in deviceVM.devices"
+                   ng-class="{'danger': device.hasError}">
+              <tr ng-click="deviceVM.getDevice()">
                 <td>{{device.id}}</td>
                 <td>{{device.name}}</td>
                 <td>{{device.type}}</td>

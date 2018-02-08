@@ -12,7 +12,7 @@
         .then(function(devices) {
             console.log(devices);
           vm.currentDevice = devices.filter(function(item) {
-            return item.id === Number($routeParams.deviceID);
+            return item.id === $routeParams.deviceID;
           })[0];
           console.log(vm.currentDevice);
 
