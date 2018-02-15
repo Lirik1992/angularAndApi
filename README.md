@@ -1,14 +1,21 @@
-# Angular Event Registration — Demo Application for Angular JS
+# AngularJS Devices Manager
 
-This project is a sample application demonstrating a more fully developed realistic single page
-angular application.
+This project is built in order to be a kind of best practices (or common programming approach) presentation.
+
+I don't pretend, that everything i write is 100% right, but you're free to use that code, hope it'll help you somehow.
 
 ### Server
 
-Two Servers are provided, an ASP.NET MVC server, and a node server. If using the ASP.NET server, simply start it up in IIS. If using the node server, from the command line run "npm install" and then either "server.sh" if you are on a linux box or "server.bat" if you are on a windows box.
+I'm using node.js express server. To run it, simply type -npm i , then node start.
+Nodemon is working strange, or rather it did not want to work on machine, I almost sure that it is problem with proxy (keep it in mind).
+
+To simply start the server open terminal and type -npm start 
+Start with nodemon -nodemon start
 
 ### Running the application
 
-Navigate your browser to `http://localhost:8000/` to see the app running in your browser. You may have to add the page to the url such as EventDetails.html depending on where you are at in the course. The port may be configured either in the node server or on IIS.
+Navigate your browser to `http://localhost:3000/` to see the app running in your browser. Here starts our SPA app, the landing page is currently on `http://localhost:3000/ParalaxEffect`.
 
+### Database FAQ
 
+The application currently using MongoDB. Soon it'll be diluteв with PostgreSQL, or totally replaced with(but unlikely).
