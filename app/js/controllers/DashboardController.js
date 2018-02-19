@@ -11,7 +11,7 @@
             console.log(id);
             homeService.getClickedUserDevices(id)
                 .then(getClickedUserDevices)
-                .catch(errorCallback)
+                .catch(errorCallback);
 
             function getClickedUserDevices(devices) {
                 console.log(devices);
@@ -33,35 +33,15 @@
                         .then(getUserName)
                         .catch(errorCallback);
                     vm.allDevices = devices.data.data;
+                    console.log(vm.allDevices.length);
                 }
             }
 
             function getUserName(user) {
                 vm.userName = user.data.name;
             }
+
         };
-
-        var devicesPromise = homeService.getAllDevices();
-        var usersPromise = homeService.getAllUsers();
-
-        // $q.all([devicesPromise, usersPromise])
-        //   .then(getAllDataSuccess)
-        //   .catch(getAllDataError);
-        //
-        // function getAllDataSuccess(dataArray) {
-        //   console.log(dataArray);
-        //   vm.allDevices = dataArray[0];
-        //   vm.allUsers = dataArray[1];
-        // }
-        //
-        // function getAllDataError(reason) {
-        //   console.log(reason);
-        // }
-        //
-        // vm.favouriteDevice = $cookies.favouriteDevice;
-        //
-        // $log.warn('sfdsfs')
-        // $log.debug('Fdsfsdfsd');
 
         homeService.getAllDevices()
             .then(getDevicesSuccess, null)
@@ -83,6 +63,25 @@
         function getAllUsersSuccess(users) {
             vm.allUsers = users;
         }
+
+        // var devicesPromise = homeService.getAllDevices();
+        // var usersPromise = homeService.getAllUsers();
+
+        // $q.all([devicesPromise, usersPromise])
+        //   .then(getAllDataSuccess)
+        //   .catch(getAllDataError);
+        //
+        // function getAllDataSuccess(dataArray) {
+        //   console.log(dataArray);
+        //   vm.allDevices = dataArray[0];
+        //   vm.allUsers = dataArray[1];
+        // }
+        //
+        // function getAllDataError(reason) {
+        //   console.log(reason);
+        // }
+        //
+        // vm.favouriteDevice = $cookies.favouriteDevice;
 
     }
 }());

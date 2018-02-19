@@ -22,4 +22,4 @@ module.exports.addDevice = function (newDevice, callback) {
 
 module.exports.getDeviceById = function (id, callback) {
     Device.findById(id, callback)
-}
+};

@@ -31,9 +31,8 @@ router.post('/create', (req, res, next) => {
 
 
 // Update if device array exists, or create new array and add new value
-
 router.post('/save/:id', (req, res, next) => {
-    let element = req.body.data;
+    let element = req.body;
 
     function checkIfAlreadyPresent(array, element, id) {
         console.log(array);
@@ -103,7 +102,6 @@ router.post('/save/:id', (req, res, next) => {
 });
 
 // Get device array by ID
-
 router.get('/getDevice/:id', (req, res) => {
     Device.findById(req.params.id, (err, data) => {
         if(!err) {

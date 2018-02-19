@@ -1,9 +1,9 @@
 (function() {
 
   angular.module('mainApp')
-    .controller('HomeController', ['appData', 'homeService', '$route', '$log', HomeController]);
+    .controller('HomeController', ['appData', 'homeService', '$scope', '$route', '$log', HomeController]);
 
-    function HomeController(appData, homeService, $route, $log) {
+    function HomeController(appData, homeService, $scope, $route, $log) {
       var vm = this;
 
       vm.appName = appData.appName;
@@ -17,6 +17,10 @@
 
       vm.greeting = homeService.greeting;
 
+      $scope.logoutUser = function() {
+        $log.debug('User logged out');
+        localStorage.clear();
+      }
 
     }
 })();

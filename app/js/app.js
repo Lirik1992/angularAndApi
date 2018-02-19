@@ -40,7 +40,7 @@
                     controllerAs: 'addDeviceVM',
                     templateUrl: '/templates/addDevice.html'
                 })
-                .when('/editDevice/:deviceID', {
+                .when('/editDevice/:deviceID/:device', {
                     controller: 'EditDeviceController',
                     controllerAs: 'deviceEditor',
                     templateUrl: '/templates/editDevice.html'
@@ -55,6 +55,7 @@
     ]);
 
     mainApp.run(['$rootScope', function ($rootScope) {
+
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
             console.log('successfully changed routes')
         });

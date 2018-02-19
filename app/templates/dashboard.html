@@ -20,19 +20,18 @@
                         <tbody>
                         <tr ng-repeat="device in dashboardVM.allDevices"
                             ng-class="{'danger': device.hasError}">
-                            <td>{{device.id}}</td>
+                            <td>{{dashboardVM.allDevices.indexOf(device)
+                                + 1}}
+                            </td>
                             <td>{{device.name}}</td>
                             <td>{{device.type}}</td>
                             <td>{{device.status}}</td>
                             <td><a
-                                    href="#/editDevice/{{device.id}}"><i
-                                    class="far fa-edit"></i></a></td>
+                                    href="#/editDevice/{{}}/{{dashboardVM.allDevices.indexOf(device)}}">
+                                <i class="far fa-edit"></i></a></td>
                         </tr>
                         </tbody>
                     </table>
-                    <a class="main link" href="#/addDevice">Add new Device</a>
-                    <a href="#/editDevice/{{dashboardVM.lastEdited.device_id}}">Last
-                        edited</a>
                 </div>
             </div>
         </div>

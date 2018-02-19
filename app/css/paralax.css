@@ -66,7 +66,7 @@ body, html {
     font-size: 16px;
 }
 
-.imageInfo h2{
+.imageInfo h2 {
     text-align: left;
     font-weight: bold;
     margin-bottom: 10px;
@@ -137,14 +137,8 @@ body, html {
     border-bottom: 1px solid #333;
 }
 
-@media screen and (max-width: 768px) {
-    .footer .col-sm-3 {
-        padding-bottom: 2rem;
-    }
-}
-
 .inlineimg {
-    padding-top: 10px; 
+    padding-top: 10px;
     display: flex;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
@@ -169,14 +163,14 @@ button {
 img {
     width: 18%;
     height: 18%;
-    
+
 }
 
 .showcase {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 6px 5px  rgba(0,0,0,.2);
+    box-shadow: 0px 6px 5px rgba(0, 0, 0, .2);
     margin-bottom: 20px
 }
 
@@ -203,7 +197,6 @@ img {
     color: #6eb5ef;
 }
 
-
 #login-reg {
     text-decoration: none;
     outline: none;
@@ -221,13 +214,13 @@ img {
     font-weight: 600;
     color: #524f4e;
     background: white;
-    box-shadow: 0 8px 15px rgba(0,0,0,.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
     transition: .3s;
 }
 
 #login-reg:hover {
     background: #2EE59D;
-    box-shadow: 0 15px 20px rgba(46,229,157,.4);
+    box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
     color: white;
     transform: translateY(-7px);
 }
@@ -237,5 +230,5 @@ img {
 }
 
 footer.footer {
-    box-shadow: 0px -8px 18px rgba(0,0,0,.1);
+    box-shadow: 0px -8px 18px rgba(0, 0, 0, .1);
 }
