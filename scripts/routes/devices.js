@@ -29,8 +29,10 @@ router.post('/create', (req, res, next) => {
     })
 });
 
+//Find device in devices array by id and update it fields
+// router.post('/update/:deviceID/:deviceIndex');
 
-// Update if device array exists, or create new array and add new value
+// Update array if device array exists in it, or create new array and add new value
 router.post('/save/:id', (req, res, next) => {
     let element = req.body;
 
@@ -85,7 +87,7 @@ router.post('/save/:id', (req, res, next) => {
                 data: element
             });
             Device.addDevice(newDevice, (err, data) => {
-                if(!err) {
+                if (!err) {
                     res.json({
                         message: 'data record was created',
                         data
@@ -104,7 +106,7 @@ router.post('/save/:id', (req, res, next) => {
 // Get device array by ID
 router.get('/getDevice/:id', (req, res) => {
     Device.findById(req.params.id, (err, data) => {
-        if(!err) {
+        if (!err) {
             res.json({
                 message: 'successfully get device by id',
                 data

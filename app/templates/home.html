@@ -8,10 +8,10 @@
         <div class="panel-body">
           <h4 class="headingWord">Profile</h4>
           <hr>
-          <label for="userName">Name: {{home.name}}</label><br>
-          <label for="userEmail">Email: {{home.email}}</label><br>
-          <label for="userUsername">Username: {{home.username}}</label><br>
-          <label for="message">Message: {{home.greeting}}</label>
+          <label for="userName">Name: {{home.user.name}}</label><br>
+          <label for="userEmail">Email: {{home.user.email}}</label><br>
+          <label for="userUsername">Username: {{home.user.username}}</label><br>
+          <label for="message">Gender: {{home.user.gender}}</label>
         </div>
       </div>
     </div>
@@ -25,7 +25,8 @@
           <h4 class="headingWord">{{home.appName}} v{{home.appVersion}}</h4>
           <hr>
           <div class="well-sm">
-            <label for="description">Description: {{home.appDescription}}</label>
+            <h4>{{home.welcome}}</h4>
+            <p>Description: {{home.appDescription}}</p>
           </div>
         </div>
       </div>

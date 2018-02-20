@@ -23,6 +23,7 @@
     "jquery": "^3.2.1",
     "jsonwebtoken": "*",
     "mongoose": "*",
+    "ng-animate": "^0.3.1",
     "passport": "*",
     "passport-jwt": "*"
   },

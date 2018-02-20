@@ -1,21 +1,29 @@
 (function() {
 
   angular.module('mainApp')
-    .controller('HomeController', ['appData', 'homeService', '$scope', '$route', '$log', HomeController]);
+    .controller('HomeController', ['appData', 'homeService', '$scope', '$log', '$route', HomeController]);
 
-    function HomeController(appData, homeService, $scope, $route, $log) {
+    function HomeController(appData, homeService, $scope, $log, $route) {
       var vm = this;
 
       vm.appName = appData.appName;
       vm.appDescription = appData.appDescription;
       vm.appVersion = appData.appVersion;
+      vm.welcome = 'Welcome to the Lurukus App';
 
-      
-      vm.name = 'Dima';
-      vm.email = 'Dima';
-      vm.username = 'Dima';
+      homeService.getUserById(localStorage.getItem('ID'))
+          .then(getUserSuccess, null)
+          .catch(getUserError);
 
-      vm.greeting = homeService.greeting;
+      function getUserSuccess(user) {
+        $log.debug(user);
+        vm.user = user.data;
+      }
+
+      function getUserError(err) {
+        $log.debug('Error occured ' + err);
+      }
+
 
       $scope.logoutUser = function() {
         $log.debug('User logged out');

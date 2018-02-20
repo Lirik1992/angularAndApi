@@ -21,8 +21,17 @@
     mainApp.config([
         '$logProvider',
         '$routeProvider',
-        function ($logProvider, $routeProvider) {
+        '$locationProvider',
+        '$httpProvider',
+        function ($logProvider, $routeProvider, $locationProvider, $httpProvider) {
             $logProvider.debugEnabled(true);
+
+            //$locationProvider.hashPrefix('!')
+            // $locationProvider.html5Mode({
+            //     enabled: true,
+            //     requireBase: true,
+            //     rewriteLinks: true
+            // });
 
             $routeProvider
                 .when('/', {
@@ -48,13 +57,18 @@
                 .when('/dashboard', {
                     controller: 'DashboardController',
                     controllerAs: 'dashboardVM',
-                    templateUrl: '/templates/dashboard.html'
+                    templateUrl: '/templates/dashboard.html',
+                    resolve: {
+                        users: function(homeService) {
+                            return homeService.getAllUsers();
+                        }
+                    }
                 })
                 .otherwise('/')
         }
     ]);
 
-    mainApp.run(['$rootScope', function ($rootScope) {
+    mainApp.run(['$rootScope', '$templateCache', function ($rootScope, $templateCache) {
 
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
             console.log('successfully changed routes')

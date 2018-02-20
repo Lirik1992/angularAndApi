@@ -9,6 +9,9 @@
 
         vm.getCurrentUserDevices = function (id) {
             console.log(id);
+            localStorage.setItem('CurrentUserId', id);
+            vm.currentUserId = localStorage.getItem('CurrentUserId');
+
             homeService.getClickedUserDevices(id)
                 .then(getClickedUserDevices)
                 .catch(errorCallback);

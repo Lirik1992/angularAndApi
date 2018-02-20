@@ -12,16 +12,36 @@
             getCurrentAuthorizedUserDevices: CurrentAuthorizedUserDevices,
             getClickedUserDevices: ClickedUserDevices,
             getUserById: UserById,
-            saveDeviceById: SaveNewDevice
+            saveDeviceById: SaveNewDevice,
+            updateDevice: UpdateDeviceById
         };
+
+        function UpdateDeviceById(data, id, index) {
+            return $http.post(
+                'http://localhost:3000/devices/update/' + id + '/' + index,
+                data
+            )
+                .then(sendResponseData)
+                .catch(sendGetError)
+        }
 
         function SaveNewDevice(data) {
             return $http.post(
                 'http://localhost:3000/devices/save/' + localStorage.getItem('ID'),
-                data
+                data,
+                {
+                    transformRequest: transformPostRequest
+                }
                 )
                 .then(sendResponseData)
                 .catch(sendGetError)
+        }
+
+        function transformPostRequest(data, headersGetter, status) {
+            data = JSON.parse(data);
+            data.hasError = true;
+            console.log(data + headersGetter);
+            return JSON.stringify(data);
         }
 
         function UserById(id) {
@@ -63,9 +83,22 @@
         function AllUsers() {
             return $http.get(
                 'http://localhost:3000/users/getall',
+                {
+                    transformResponse: transformGetUsers
+                }
             )
                 .then(sendResponseData)
                 .catch(sendGetError)
+        }
+
+        function transformGetUsers(data, headersGetter, status) {
+            var transformed = angular.fromJson(data);
+
+            transformed.forEach(function(currentValue, index, array) {
+                currentValue.dateDownloaded = new Date();
+            });
+            console.log(transformed);
+            return transformed;
         }
 
         function sendResponseData(response) {
