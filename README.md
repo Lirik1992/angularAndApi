@@ -15,6 +15,9 @@ Start with nodemon -nodemon start
 ### Running the application
 
 Navigate your browser to `http://localhost:3000/` to see the app running in your browser. Here starts our SPA app, the landing page is currently on `http://localhost:3000/ParalaxEffect`.
+To correct display follow 'http://localhost:3000/RegistrationPage.html', then authorize.
+Link to download mongo:
+'https://www.mongodb.com/download-center?jmp=tutorials&_ga=2.38187747.1970487416.1519245725-814444331.1519245725#community'
 
 ### Database FAQ
 
