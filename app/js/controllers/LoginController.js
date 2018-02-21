@@ -8,7 +8,24 @@ var LoginController = (function () {
       password: document.getElementsByName("password")[0].value
     };
     Http.post("http://localhost:3000/users/authenticate", loginForm, function(data, err) {
-      var parsedData = JSON.parse(data);
+      if(err) {
+        console.log(err)
+      } else {
+        console.log(data)
+        var parsedData = JSON.parse(data);
+        var token = parsedData.token;
+        console.log(parsedData.success)
+        if (parsedData.success) {
+          setCookie(token);
+          localStorage.setItem('ID', parsedData.user.id)
+          window.location = '/index.html';
+        } else {
+          console.log('Something bad occured');
+        }
+      }
+    });
+
+    var parsedData = JSON.parse(data);
       var token = parsedData.token;
       if (!parsedData.success) {
         console.log('Something bad occured');
@@ -17,7 +34,7 @@ var LoginController = (function () {
         localStorage.setItem('ID', parsedData.user.id)
         window.location = '/index.html';
       }
-    });
+
 
     // Cookie, the default one  TODO: replace it with js-cookie
     // TOKEN is here, pull it with

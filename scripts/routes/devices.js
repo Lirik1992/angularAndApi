@@ -29,8 +29,29 @@ router.post('/create', (req, res, next) => {
     })
 });
 
+//TODO: Map old array and transform device under deviceIndex, after thar save new array in db
 //Find device in devices array by id and update it fields
-// router.post('/update/:deviceID/:deviceIndex');
+router.post('/update/:deviceID/:deviceIndex', (req, res, next) => {
+    let deviceID = req.params.deviceID;
+    let deviceIndex = req.params.deviceIndex;
+    let updatedDevice = req.body;
+    console.log(deviceID + '  ' + deviceIndex + '   ' + updatedDevice)
+
+    Device.getDeviceById(deviceID, (err, data) => {
+        console.log(data);
+        console.log(data.data[0])
+        let dataSource = data.data[0];
+        let newDeviceArray = data.data.forEach(function(item, index){
+
+        })
+        Device.update({_id: deviceID}, {$push: {data: newDeviceArray}}, {
+            safe: true,
+            upsert: true
+        }, (err, data) => {
+            console.log(data)
+        })
+    })
+});
 
 // Update array if device array exists in it, or create new array and add new value
 router.post('/save/:id', (req, res, next) => {
