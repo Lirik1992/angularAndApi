@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    var mainApp = angular.module('mainApp', ['ngSanitize', 'ngRoute', 'ngCookies']);
+    var mainApp = angular.module('mainApp', ['ngSanitize', 'ngRoute', 'ngCookies', 'mainApp.directives']);
 
     mainApp.provider('appData', ['constants', function (constants) {
         this.$get = function () {

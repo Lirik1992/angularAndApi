@@ -18,8 +18,9 @@
 
 
       function getDevicesSuccess(devices) {
-          console.log(devices.data.data);
-          vm.devices = devices.data.data;
+        console.log(devices)
+        console.log(devices.data.data);
+        vm.devices = devices.data.data;
       }
 
       function errorCallback(errorMsg) {

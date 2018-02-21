@@ -1,10 +1,10 @@
 (function () {
-
+    'use strict';
 
     angular.module('mainApp')
-        .controller('EditDeviceController', ['$routeParams', 'homeService', '$log', '$cookies', '$cookieStore', EditDeviceController]);
+        .controller('EditDeviceController', ['$routeParams', 'homeService', '$log', '$cookies', '$cookieStore', '$location', EditDeviceController]);
 
-    function EditDeviceController($routeParams, homeService, $log, $cookies, $cookieStore) {
+    function EditDeviceController($routeParams, homeService, $log, $cookies, $cookieStore, $location) {
 
         var vm = this;
 
@@ -19,14 +19,19 @@
 
         vm.updateDevice = function() {
             $log.debug(vm.currentDevice);
-
-            homeService.updateDevice(vm.currentDevice ,$routeParams.deviceID, $routeParams.device)
-                .then(updateDeviceSuccess, null)
-                .catch(updateDeviceError)
+            if(vm.currentDevice.name === undefined && vm.currentDevice.type === undefined &&
+                vm.currentDevice.model === undefined) {
+                    $log.debug('you can not leave fields empty')
+                } else {
+                    homeService.updateDevice(vm.currentDevice ,$routeParams.deviceID, $routeParams.device)
+                        .then(updateDeviceSuccess, null)
+                        .catch(updateDeviceError)
+                }
         };
 
-        function updateDeviceSuccess(responce) {
-            $log.debug(responce)
+        function updateDeviceSuccess(response) {
+            $log.debug(response)
+            $location.path('/home')
         }
 
         function updateDeviceError(error) {

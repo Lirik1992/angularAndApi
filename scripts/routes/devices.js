@@ -7,6 +7,7 @@ const Device = require('../models/device');
 
 
 router.post('/create', (req, res, next) => {
+    
     var newDevice = new Device({
         _id: req.body.id,
         data: req.body.data
@@ -29,32 +30,58 @@ router.post('/create', (req, res, next) => {
     })
 });
 
-//TODO: Map old array and transform device under deviceIndex, after thar save new array in db
 //Find device in devices array by id and update it fields
 router.post('/update/:deviceID/:deviceIndex', (req, res, next) => {
+    console.log('router.post(/update/:deviceID/:deviceIndex) fired up, get following logic callback');
     let deviceID = req.params.deviceID;
     let deviceIndex = req.params.deviceIndex;
     let updatedDevice = req.body;
-    console.log(deviceID + '  ' + deviceIndex + '   ' + updatedDevice)
+    console.log(deviceID + '  ' + deviceIndex + '   ' + updatedDevice);
 
     Device.getDeviceById(deviceID, (err, data) => {
-        console.log(data);
-        console.log(data.data[0])
-        let dataSource = data.data[0];
-        let newDeviceArray = data.data.forEach(function(item, index){
+        if(!err) {
+            console.log(data.data)
+            let oldArray = data.data;
+            let newArray = oldArray.map(function(item, index, oldArray) {
+                oldArray[deviceIndex] = updatedDevice
+                return oldArray;
+            })[0];
+            console.log('This is the new data array ' + JSON.stringify(newArray));
 
-        })
-        Device.update({_id: deviceID}, {$push: {data: newDeviceArray}}, {
-            safe: true,
-            upsert: true
-        }, (err, data) => {
-            console.log(data)
-        })
+            Device.update({_id: deviceID}, {
+                $set: {
+                    data: newArray
+                }
+            },  {
+                safe: true,
+                upsert: true
+            },
+             (err, data) => {
+                if(!err) {
+                    console.log(data);
+                    res.json({
+                        message: 'Device has been successfully updated',
+                        data
+                    })
+                } else {
+                    res.json({
+                        message: 'Failed to update device',
+                        err
+                    })
+                }
+            })
+        } else {
+            res.json({
+                message: 'Failed to to get device by id',
+                err
+            })
+        }
     })
 });
 
 // Update array if device array exists in it, or create new array and add new value
 router.post('/save/:id', (req, res, next) => {
+    console.log('router.post(/save/:id) fired up, get following logic callback');
     let element = req.body;
 
     function checkIfAlreadyPresent(array, element, id) {
@@ -96,7 +123,6 @@ router.post('/save/:id', (req, res, next) => {
             });
             next();
         }
-
     }
 
     Device.findById(req.params.id, function (err, data) {
