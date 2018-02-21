@@ -25,3 +25,7 @@ nav.navbar {
 .menu.navbar-items:hover {
   text-decoration: underline;
 }
+
+button {
+  margin-top: 8px;
+}

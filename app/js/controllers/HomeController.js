@@ -11,13 +11,15 @@
       vm.appVersion = appData.appVersion;
       vm.welcome = 'Welcome to the Lurukus App';
 
+
+
       homeService.getUserById(localStorage.getItem('ID'))
           .then(getUserSuccess, null)
           .catch(getUserError);
 
       function getUserSuccess(user) {
         $log.debug(user);
-        vm.user = user.data;
+        $scope.user = user.data;
       }
 
       function getUserError(err) {

@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="panel panel-primary">
+              <div class="panel-heading">
+                  <h3 class="panel-title">Device form</h3>
+              </div>
+              <div class="panel-body">
+                  <form role="form">
+
+                      <div class="form-group">
+                          <label for="name">Name</label>
+                          <input type="text" class="form-control" name="name"
+                                 id="name"
+                                 placeholder="Give a name to your device"
+                                 minlength="5" required
+                                 tabindex="1"
+                                 ng-model="profileEditorVM.currentDevice.name">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="type">Type</label>
+                          <input type="text" class="form-control" name="type"
+                                 id="type" required tabindex="2"
+                                 ng-model="profileEditorVM.currentDevice.type">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="model">Model</label>
+                          <input type="text" class="form-control" name="model"
+                                 id="model" required tabindex="2"
+                                 ng-model="profileEditorVM.currentDevice.model">
+                      </div>
+
+                      <div class="form-group">
+                          <button class="btn btn-primary"
+                                  ng-click="profileEditorVM.updateDevice()">Save
+                          </button>
+
+                          <!--<button class="btn btn-default"-->
+                                  <!--ng-click="profileEditorVM.setAsFavourite()">Set as-->
+                              <!--Favourite</button>-->
+                      </div>
+
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

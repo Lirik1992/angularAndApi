@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    var mainApp = angular.module('mainApp', ['ngSanitize', 'ngRoute', 'ngCookies', 'mainApp.directives']);
+    var mainApp = angular.module('mainApp', ['ngSanitize', 'ngRoute', 'ngCookies']);
 
     mainApp.provider('appData', ['constants', function (constants) {
         this.$get = function () {
@@ -58,11 +58,16 @@
                     controller: 'DashboardController',
                     controllerAs: 'dashboardVM',
                     templateUrl: '/templates/dashboard.html',
-                    resolve: {
-                        users: function(homeService) {
-                            return homeService.getAllUsers();
-                        }
-                    }
+                    // resolve: {
+                    //     users: function(homeService) {
+                    //         return homeService.getAllUsers();
+                    //     }
+                    // }
+                })
+                .when('/editProfile/:userId', {
+                    controller: 'EditProfileController',
+                    constrollerAs: 'profileEditorVM',
+                    templateUrl: '/templates/editProfile.html'
                 })
                 .otherwise('/')
         }
