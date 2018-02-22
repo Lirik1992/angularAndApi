@@ -23,4 +23,18 @@
       }
     }
   })
+  angular.module('mainApp')
+    .directive('devicesWidget', function() {
+      return {
+        restrict: 'E',
+        scope: true,
+        templateUrl: '/js/directives/devicesWidget/devices.html',
+        controller: function($scope) {
+          $scope.collapsed = true;
+          $scope.collapse = function() {
+            $scope.collapsed = !$scope.collapsed
+          }
+        }
+      }
+    })
 }())
