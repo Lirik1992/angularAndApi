@@ -33,3 +33,7 @@ button {
 devices-widget {
   text-align: center
 }
+
+.toaster {
+  padding-top: 70px;
+}

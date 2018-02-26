@@ -5,6 +5,7 @@
     .constant('constants', {
       APP_NAME: 'Lirikus',
       APP_DESCRIPTION: 'Devices Manager',
-      APP_VERSION: '1.0'
+      APP_VERSION: '1.0',
+      
     })
 }())

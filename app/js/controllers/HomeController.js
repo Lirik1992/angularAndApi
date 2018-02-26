@@ -1,9 +1,9 @@
 (function() {
 
   angular.module('mainApp')
-    .controller('HomeController', ['appData', 'homeService', '$scope', '$log', '$route', HomeController]);
+    .controller('HomeController', ['appData', 'homeService', '$scope', '$log', '$route', 'toaster', 'toasterService', HomeController]);
 
-    function HomeController(appData, homeService, $scope, $log, $route) {
+    function HomeController(appData, homeService, $scope, $log, $route, toaster, toasterService) {
       var vm = this;
 
       vm.appName = appData.appName;
@@ -38,10 +38,13 @@
         });
         $log.debug(countAllElements)
         $scope.devices.totalCount = countAllElements;
+        
+        toasterService.getConfiguredToaster('success', 'Success', 'Devices info has been loaded successfully')
       }
 
       function getDevicesError(err) {
-        $log.debug(err)
+        $log.debug(err);
+        toasterService.getConfiguredToaster('error', 'Error', 'Failed to load devices info')
       }
       
       homeService.getUserById(localStorage.getItem('ID'))
@@ -51,12 +54,13 @@
       function getUserSuccess(user) {
         $log.debug(user);
         $scope.user = user.data;
+        toasterService.getConfiguredToaster('success', 'Success', 'Profile info has been loaded successfully')
       }
 
       function getUserError(err) {
         $log.debug('Error occured ' + err);
+        toasterService.getConfiguredToaster('error', 'Error', 'Failed to load profile info')
       }
-
 
       $scope.logoutUser = function() {
         $log.debug('User logged out');
