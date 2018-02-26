@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    var mainApp = angular.module('mainApp', ['ngSanitize', 'ngRoute', 'ngCookies']);
+    var mainApp = angular.module('mainApp', ['ngSanitize', 'ngRoute', 'ngCookies', 'toaster', 'ngAnimate']);
 
     mainApp.provider('appData', ['constants', function (constants) {
         this.$get = function () {
@@ -25,6 +25,7 @@
         '$httpProvider',
         function ($logProvider, $routeProvider, $locationProvider, $httpProvider) {
             $logProvider.debugEnabled(true);
+
 
             //$locationProvider.hashPrefix('!')
             // $locationProvider.html5Mode({

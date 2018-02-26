@@ -28,21 +28,23 @@
         function SaveNewDevice(data) {
             return $http.post(
                 'http://localhost:3000/devices/save/' + localStorage.getItem('ID'),
-                data,
-                {
-                    transformRequest: transformPostRequest
-                }
+                data
+                // {
+                //     transformRequest: transformPostRequest
+                // }
                 )
                 .then(sendResponseData)
                 .catch(sendGetError)
         }
 
-        function transformPostRequest(data, headersGetter, status) {
-            data = JSON.parse(data);
-            data.hasError = true;
-            console.log(data + headersGetter);
-            return JSON.stringify(data);
-        }
+        // Request transformator, currently there is no reason to use such
+        
+        // function transformPostRequest(data, headersGetter, status) {
+        //     data = JSON.parse(data);
+        //     data.hasError = true;
+        //     console.log(data + headersGetter);
+        //     return JSON.stringify(data);
+        // }
 
         function UserById(id) {
             return $http.get(

@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('mainApp')
-        .controller('EditDeviceController', ['$routeParams', 'homeService', '$log', '$cookies', '$cookieStore', '$location', EditDeviceController]);
+        .controller('EditDeviceController', ['$routeParams', 'homeService', '$log', '$cookies', '$cookieStore', '$location', '$timeout', 'toaster', 'toasterService', EditDeviceController]);
 
-    function EditDeviceController($routeParams, homeService, $log, $cookies, $cookieStore, $location) {
+    function EditDeviceController($routeParams, homeService, $log, $cookies, $cookieStore, $location,  $timeout, toaster, toasterService) {
 
         var vm = this;
 
@@ -29,13 +29,25 @@
                 }
         };
 
+        vm.cancelUpdating = function() {
+            $log.debug('Updating canceled');
+            $timeout(function(){
+                toasterService.getConfiguredToaster('info', 'Info', 'Device editing was canceled');
+            }, 100);
+            $location.path('/dashboard');
+        }
+
         function updateDeviceSuccess(response) {
-            $log.debug(response)
-            $location.path('/home')
+            $log.debug(response);
+            $timeout(function() {
+                toasterService.getConfiguredToaster('success', 'Success', 'Device has been successfully updated');
+            }, 100)
+            $location.path('/home');
         }
 
         function updateDeviceError(error) {
-            $log.debug('Something bad happened ' + error)
+            $log.debug('Something bad happened ' + error);
+            toasterService.getConfiguredToaster('error', 'Error', 'Failed to update device. Do not duplicate your devices!')
         }
 
 

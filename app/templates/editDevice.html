@@ -33,9 +33,13 @@
                         </div>
 
                         <div class="form-group">
+                            <button class="btn btn-warning"
+                                ng-click="deviceEditor.cancelUpdating()">Cancel
+                            </button>
                             <button class="btn btn-primary"
                                     ng-click="deviceEditor.updateDevice()">Save
                             </button>
+                            
 
                             <!--<button class="btn btn-default"-->
                                     <!--ng-click="deviceEditor.setAsFavourite()">Set as-->
@@ -46,5 +50,6 @@
                 </div>
             </div>
         </div>
+        <toaster-container class="toaster main-toaster" toaster-options="{'animation-class': 'toast-top-right', 'limit': 5}"></toaster-container>
     </div>
 </div>

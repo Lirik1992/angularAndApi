@@ -2,13 +2,13 @@
     'use strict';
 
     angular.module('mainApp')
-        .controller('DashboardController', ['$q', 'homeService', '$log', '$cookies', DashboardController]);
+        .controller('DashboardController', ['$q', 'homeService', '$log', '$cookies', 'toaster', 'toasterService', DashboardController]);
 
-    function DashboardController($q, homeService, $log, $cookies) {
+    function DashboardController($q, homeService, $log, $cookies, toaster, toasterService) {
         var vm = this;
 
         vm.getCurrentUserDevices = function (id) {
-            console.log(id);
+            $log.debug(id);
             localStorage.setItem('CurrentUserId', id);
             vm.currentUserId = localStorage.getItem('CurrentUserId');
 
@@ -17,9 +17,9 @@
                 .catch(errorCallback);
 
             function getClickedUserDevices(devices) {
-                console.log(devices);
+                $log.debug(devices);
                 if (Number(devices.data) === 0) {
-                    console.log('this user do not have devices');
+                    $log.debug('this user do not have devices');
                     vm.userName = 'Nobody';
                     vm.allDevices = [
                         {
@@ -36,7 +36,7 @@
                         .then(getUserName)
                         .catch(errorCallback);
                     vm.allDevices = devices.data.data;
-                    console.log(vm.allDevices.length);
+                    $log.debug(vm.allDevices.length);
                 }
             }
 
@@ -51,20 +51,21 @@
             .catch(errorCallback);
 
         function getDevicesSuccess(devices) {
-            console.log(devices);
+            $log.debug(devices);
         }
 
         function errorCallback(errorMsg) {
-            console.log('Error message ' + errorMsg);
+            $log.debug('Error message ' + errorMsg);
+            toasterService.getConfiguredToaster('error', 'Error', 'Failed to load all users info');
         }
 
-
         homeService.getAllUsers()
-            .then(getAllUsersSuccess)
+            .then(getAllUsersSuccess, null)
             .catch(errorCallback);
 
         function getAllUsersSuccess(users) {
             vm.allUsers = users;
+            toasterService.getConfiguredToaster('success', 'Success', 'All users info has been loaded');
         }
 
         // var devicesPromise = homeService.getAllDevices();
@@ -75,13 +76,13 @@
         //   .catch(getAllDataError);
         //
         // function getAllDataSuccess(dataArray) {
-        //   console.log(dataArray);
+        //   $log.debug(dataArray);
         //   vm.allDevices = dataArray[0];
         //   vm.allUsers = dataArray[1];
         // }
         //
         // function getAllDataError(reason) {
-        //   console.log(reason);
+        //   $log.debug(reason);
         // }
         //
         // vm.favouriteDevice = $cookies.favouriteDevice;
