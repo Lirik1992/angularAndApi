@@ -29,6 +29,7 @@
         };
 
         function getSavedDeviceResponse(response) {
+            debugger;
             $log.debug(response);
             $timeout(function() {
                 toasterService.getConfiguredToaster('success', 'Success', 'New device has been created')
@@ -37,6 +38,7 @@
         }
 
         function getError(errorMsg) {
+            debugger;
             $log.debug('Error occured' + errorMsg);
             toasterService.getConfiguredToaster('error', 'Error', 'Failed to create new device')
         }
