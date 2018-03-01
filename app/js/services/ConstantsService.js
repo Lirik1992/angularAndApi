@@ -1,5 +1,5 @@
 (function() {
-  'use strict'
+  'use strict';
 
   angular.module('mainApp')
     .constant('constants', {
@@ -8,4 +8,4 @@
       APP_VERSION: '1.0',
       
     })
-}())
+}());

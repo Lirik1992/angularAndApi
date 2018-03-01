@@ -21,10 +21,13 @@ mongoose.connection.on('error', (err) => {
 
 
 const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server, {serverClient: true});
+
 
 // Router routes
 const users = require('./routes/users');
-const devices = require('./routes/devices')
+const devices = require('./routes/devices');
 
 // Port
 const port = 3000;
@@ -53,8 +56,17 @@ app.get('/', (req, res) => {
     res.send('Invalid Endpoint');
 });
 
+
+io.on('connection', function(socket) {
+    socket.emit('connected', 'You are connected');
+    socket.on('my event', function(data) {
+        console.log(data)
+    });
+});
+
+
 //Start Server
-app.listen(port, () => {
+server.listen(port, () => {
     console.log("Server started on " + port);
 });
 

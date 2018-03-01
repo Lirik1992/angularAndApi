@@ -1,78 +1,82 @@
-(function() {
-  'use strict';
+(function () {
+    'use strict';
 
-  angular.module('mainApp')
-    .directive('genderChart', function() {
-      return {
-        restrict: 'A',
-        templateUrl: '/js/directives/genderChart/genderChart.html',
-        link: function($scope, $elem, $attr) {
-          var data = google.visualization.arrayToDataTable([
-            ['Gender', "User's gender statistics"],
-            ['Male', 10],
-            ['Female', 5]
-          ]);
+    class WeatherWidgetComponent {
+        constructor() {
 
-          var options = {
-            legend: 'right',
-            title: 'User gender statistics',
-            is3D: true,
-            backgroundColor: 'transparent',
-            legendTextStyle: { color: '#fff', fontSize: 16 },
-            titleTextStyle: { color: '#fff', fontSize: 16 },
-            hAxis: {
-              color: '#fff'
-            }
-          };
-          var chart = new google.visualization.PieChart($elem[0])
-          chart.draw(data, options)
         }
-      }
-    })
-    google.load('visualization', '1', {'packages':['corechart']});
-}())
+    }
+
+    angular.module('mainApp')
+        .component('genderChart', {
+            templateUrl: '/js/directives/genderChart/genderChart.html',
+            controller: function ($scope, homeService) {
 
 
-
-//TODO: figure out how to draw chart of devices popularity
-
-// google.charts.load('current', {'packages':['corechart']});
-// google.charts.setOnLoadCallback(drawChart);
-
-// function drawChart() {
-
-//   // homeService.getAllDevices()
-//   //   .then(getAllDevicesSuccess, null)
-//   //   .catch(errorCallback)
-  
-//   // function getAllDevicesSuccess(devices) {
-//   //   $log.debug(devices.data);
-//   //   var arrayOfArrays = [];
-//   //   devices.data.forEach(function(element) {
-//   //     arrayOfArrays.push(element.data)
-//   //   })
-//   //   $log.debug(arrayOfArrays)
-//   // }
-
-//   var data = google.visualization.arrayToDataTable([
-//     ['Gender', "User's gender statistics"],
-//     ['Male', 10],
-//     ['Female', 5]
-//   ]);
-
-// var options = {
-//   legend: 'right',
-//   title: 'User gender statistics',
-//   is3D: true,
-//   backgroundColor: 'transparent',
-//   legendTextStyle: { color: '#fff', fontSize: 16 },
-//   titleTextStyle: { color: '#fff', fontSize: 16 },
-//   hAxis: {
-//     color: '#fff'
-//   }
-// };
+                    $scope.maleCount = 0;
+                    $scope.femaleCount = 0;
+                    $scope.otherCount = 0;
 
 
+                    homeService.getAllUsers()
+                        .then(userSuccess, null)
+                        .catch(userError);
 
-//   chart.draw(data, options);
-// }
+                    function userSuccess(users) {
+
+                        users.forEach(function (item) {
+                            if (item.gender === 'male') {
+                                $scope.maleCount++
+                            } else if (item.gender === 'female') {
+                                $scope.femaleCount++
+                            } else {
+                                $scope.otherCount++
+                            }
+                        });
+
+
+                    }
+
+                    function userError(error) {
+                        console.log(error)
+                    }
+
+
+                    google.charts.load('current', {packages: ['corechart']});
+                    google.charts.setOnLoadCallback(drawChart);
+
+                    function drawChart() {
+
+                        // Define the chart to be drawn.
+                        var data = new google.visualization.DataTable();
+                        data.addColumn('string', 'User genders');
+                        data.addColumn('number', 'Users of gender');
+                        data.addRows([
+                            ['Male', $ctrl.maleCount],
+                            ['Female', $scope.femaleCount],
+                            ['Other', $scope.otherCount]
+                        ]);
+
+                        var options = {
+                            legend: 'right',
+                            title: 'User gender statistics',
+                            is3D: true,
+                            backgroundColor: 'transparent',
+                            legendTextStyle: {color: '#fff', fontSize: 16},
+                            titleTextStyle: {color: '#fff', fontSize: 16},
+                            hAxis: {
+                                color: '#fff'
+                            }
+                        };
+
+                        // Instantiate and draw the chart.
+                        var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+                        chart.draw(data, options);
+                    }
+
+
+            }
+        })
+
+}());
+

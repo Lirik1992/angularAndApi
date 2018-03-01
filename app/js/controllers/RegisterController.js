@@ -8,7 +8,7 @@ var RegisterController = (function () {
       email: document.getElementsByName("email")[0].value,
       username: document.getElementsByName("username")[0].value,
       password: document.getElementsByName("password")[0].value,
-      gender: document.getElementsByName("gender")[0].value
+      gender: $('input[name="gender"]:checked').val()
     };
     console.log(registerForm);
     var result = Http.post("http://localhost:3000/users/register", registerForm, function (err, data) {

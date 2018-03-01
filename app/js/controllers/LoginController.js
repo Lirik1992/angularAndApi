@@ -11,13 +11,13 @@ var LoginController = (function () {
       if(err) {
         console.log(err)
       } else {
-        console.log(data)
+        console.log(data);
         var parsedData = JSON.parse(data);
         var token = parsedData.token;
-        console.log(parsedData.success)
+        console.log(parsedData.success);
         if (parsedData.success) {
           setCookie(token);
-          localStorage.setItem('ID', parsedData.user.id)
+          localStorage.setItem('ID', parsedData.user.id);
           window.location = '/index.html';
         } else {
           console.log('Something bad occured');
@@ -47,7 +47,7 @@ var LoginController = (function () {
       date.setDate(date.getDate() + 7);
       document.cookie = 'token=' + info + ';path=/;' + 'expires=' + date.toUTCString();
     }
-  }
+  };
   return {
     login: loginMethod
   };
