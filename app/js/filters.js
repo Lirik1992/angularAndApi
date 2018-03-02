@@ -1,7 +1,8 @@
 'use strict';
 
 // Custom filter   DURATION FILTER
-eventsApp.filter('durations', function() {
+angular.module('mainApp')
+   .filter('durations', function() {
     return function(duration) {
         switch(duration) {
             case 1:
@@ -14,6 +15,6 @@ eventsApp.filter('durations', function() {
                 return 'full day';
         }
     }
-})
+});
 
 // DEVICES FILTER
