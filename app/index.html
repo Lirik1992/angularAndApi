@@ -17,51 +17,13 @@
     <script type="text/javascript"
             src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script
+  src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>
 </head>
 
 <body ng-cloak ng-app="mainApp" ng-controller="HomeController">
-<nav class="navbar fill navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed"
-                    data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a id="navbar-brand" class="menu navbar-brand" href="#/"
-               ng-init="lirikus = 'Lirikus 2'">{{lirikus
-                }}</a>
-        </div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a class="menu navbar-items" href="#/">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="menu navbar-items" href="#/devices">Devices</a>
-                </li>
-                <li>
-                    <a class="menu navbar-items"
-                       href="#/dashboard">Dashboard</a>
-                </li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a ng-click="logoutUser()" href="ParalaxEffect.html">Logout
-                        <i class="fas fa-sign-out-alt"></i></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
+<navigation-bar></navigation-bar>
 
 <div ng-view></div>
 
@@ -80,13 +42,16 @@
 <script src="js/services/ToasterService.js"></script>
 <script src="js/services/DeviceLoggerInterceptor.js"></script>
 <script src="js/services/WeatherProvider.js"></script>
+<script src="js/directives/navigationBar/navigation.js"></script>
 <script src="js/directives/profileDirective/profileCard.js"></script>
 <script src="js/directives/genderChart/genderChart.js"></script>
+<script src="js/directives/googleMap/googleMap.js"></script>
 <script src="js/controllers/HomeController.js"></script>
 <script src="js/controllers/DeviceController.js"></script>
 <script src="js/controllers/DashboardController.js"></script>
 <script src="js/controllers/AddDeviceController.js"></script>
 <script src="js/controllers/EditDeviceController.js"></script>
+
 
 </body>
 

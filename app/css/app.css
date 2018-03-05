@@ -38,6 +38,11 @@ devices-widget {
   padding-top: 70px;
 }
 
+#gmaps {
+  width: 450px;
+  height: 450px;
+}
+
 /*nav {*/
   /*width: 80%;*/
   /*margin: 0 auto;*/
