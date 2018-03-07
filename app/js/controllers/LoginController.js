@@ -7,7 +7,7 @@ var LoginController = (function () {
       username: document.getElementsByName("username")[0].value,
       password: document.getElementsByName("password")[0].value
     };
-    Http.post("http://localhost:8080/authorization", loginForm, function(data, err) {
+    Http.post("http://localhost:8080/checkStudent", loginForm, function(data, err) {
       if(err) {
         console.log(err)
       } else {
