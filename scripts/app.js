@@ -7,27 +7,27 @@ const mongoose = require('mongoose');
 const config = require('./config/database');
 const rootPath = path.normalize(__dirname + '/../');
 
-// Connect to database
-mongoose.connect(config.database);
+// // Connect to database
+// mongoose.connect(config.database);
 
-//On connection
-mongoose.connection.on('connected', () => {
-    console.log('Connected to database ' + config.database);
-});
+// //On connection
+// mongoose.connection.on('connected', () => {
+//     console.log('Connected to database ' + config.database);
+// });
 
-mongoose.connection.on('error', (err) => {
-    console.log('Database error ' + err);
-});
+// mongoose.connection.on('error', (err) => {
+//     console.log('Database error ' + err);
+// });
 
 
 const app = express();
 const server = require('http').Server(app);
-const io = require('socket.io')(server, {serverClient: true});
+// const io = require('socket.io')(server, {serverClient: true});
 
 
-// Router routes
-const users = require('./routes/users');
-const devices = require('./routes/devices');
+// // Router routes
+// const users = require('./routes/users');
+// const devices = require('./routes/devices');
 
 // Port
 const port = 3000;
@@ -38,18 +38,18 @@ app.use(cors());
 // Set static folder
 app.use(express.static(rootPath + '/app'));
 
-// Body-parser Middleware
-app.use(bodyParser.json());
+// // Body-parser Middleware
+// app.use(bodyParser.json());
 
-// Passport Middleware
-app.use(passport.initialize());
-app.use(passport.session());
+// // Passport Middleware
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-require('./config/passport')(passport);
+// require('./config/passport')(passport);
 
-// Path to collections
-app.use('/users', users);
-app.use('/devices', devices);
+// // Path to collections
+// app.use('/users', users);
+// app.use('/devices', devices);
 
 // Index Route
 app.get('/', (req, res) => {
@@ -57,12 +57,12 @@ app.get('/', (req, res) => {
 });
 
 
-io.on('connection', function(socket) {
-    socket.emit('connected', 'You are connected');
-    socket.on('my event', function(data) {
-        console.log(data)
-    });
-});
+// io.on('connection', function(socket) {
+//     socket.emit('connected', 'You are connected');
+//     socket.on('my event', function(data) {
+//         console.log(data)
+//     });
+// });
 
 
 //Start Server
